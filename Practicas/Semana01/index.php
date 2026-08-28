@@ -17,6 +17,9 @@
         // 3. dato numérico (Costo unitario)
         $costo_unitario = 3200;
 
+        // 4. Una operación utilizando los datos anteriores
+        $valor_total = $stock * $costo_unitario;
+
     ?>
 
     <p><strong>Producto:</strong> <?php echo $articulo; ?></p>
