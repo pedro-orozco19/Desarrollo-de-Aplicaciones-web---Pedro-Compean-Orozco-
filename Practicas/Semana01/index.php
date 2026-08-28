@@ -23,6 +23,10 @@
     ?>
 
     <p><strong>Producto:</strong> <?php echo $articulo; ?></p>
+    <p><strong>Unidades disponibles:</strong> <?php echo $stock; ?> piezas</p>
+    <p><strong>Costo por unidad:</strong> $<?php echo $costo_unitario; ?></p>
+    <hr>
+    <h3>Valor total en almacén: $<?php echo $valor_total; ?></h3>
 
 </body>
 </html>
