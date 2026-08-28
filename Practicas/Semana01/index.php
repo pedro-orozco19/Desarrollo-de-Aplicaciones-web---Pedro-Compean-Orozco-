@@ -8,8 +8,15 @@
     <h1>Gestor de Inventario</h1>
     
     <?php
-        // 1. Un dato de texto (Nombre del artículo en el almacén)
+        // 1. dato de texto (nombre del producto)
         $articulo = "Monitor Dell 24 pulgadas";
+
+        // 2. dato numérico (Cantidad en stock)
+        $stock = 45;
+
+        // 3. dato numérico (Costo unitario)
+        $costo_unitario = 3200;
+
     ?>
 
     <p><strong>Producto:</strong> <?php echo $articulo; ?></p>
