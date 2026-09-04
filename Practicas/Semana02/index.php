@@ -31,8 +31,7 @@
     <h2>Registrar Nuevo Producto</h2>
     
     <!-- Formulario enviando datos por post hacia procesar.php -->
-    <form action="procesar.php" method="POST"></form>
-        
+    <form action="procesar.php" method="POST">
         <p>
             <label for="nombre">Nombre del Producto:</label><br>
             <input type="text" id="nombre" name="nombre" placeholder="Ej. Teclado Mecánico">
