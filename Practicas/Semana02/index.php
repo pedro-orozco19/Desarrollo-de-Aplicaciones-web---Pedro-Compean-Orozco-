@@ -27,11 +27,11 @@
     <h3>Valor total en almacén: $<?php echo $valor_total; ?></h3>
 
     <hr>
-    
+
     <h2>Registrar Nuevo Producto</h2>
     
-    <!-- Formulario enviando datos por GET hacia procesar.php -->
-    <form action="procesar.php" method="GET">
+    <!-- Formulario enviando datos por post hacia procesar.php -->
+    <form action="procesar.php" method="POST"></form>
         
         <p>
             <label for="nombre">Nombre del Producto:</label><br>
