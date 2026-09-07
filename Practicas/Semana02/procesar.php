@@ -14,6 +14,7 @@
         // Recoleccion de datos del formulario
         $nombre = $_POST['nombre'];
         $stock = $_POST['stock_nuevo'];
+        $precio = $_POST['precio']; // <-- NUEVO CAMPO ATRAPADO
         $correo = $_POST['correo_proveedor'];
         $categoria = $_POST['categoria'];
 
@@ -29,6 +30,11 @@
         // Validar que el stock sea un número válido y mayor a 0
         if (empty($stock) || !is_numeric($stock) || $stock <= 0) {
             $errores[] = "⚠️ La cantidad en stock debe ser un número válido mayor a 0.";
+        }
+
+        // NUEVA VALIDACIÓN: Validar que el precio sea válido
+        if (empty($precio) || !is_numeric($precio) || $precio <= 0) {
+            $errores[] = "⚠️ El precio debe ser un número válido mayor a 0.";
         }
         
         // Validar el formato del correo
@@ -56,6 +62,7 @@
             echo "<h2>✔️ Registro recibido correctamente.</h2>";
             echo "<p><strong>Producto:</strong> $nombre</p>";
             echo "<p><strong>Stock Inicial:</strong> $stock piezas</p>";
+            echo "<p><strong>Precio:</strong> $$precio</p>"; // <-- NUEVO CAMPO MOSTRADO
             echo "<p><strong>Contacto Proveedor:</strong> $correo</p>";
             echo "<p><strong>Categoría:</strong> $categoria</p>";
             echo '<br><a href="index.php">⬅️ Registrar otro producto</a>';

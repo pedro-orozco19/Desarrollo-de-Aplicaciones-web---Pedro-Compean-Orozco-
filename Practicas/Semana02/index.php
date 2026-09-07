@@ -42,6 +42,12 @@
             <input type="number" id="stock_nuevo" name="stock_nuevo" placeholder="Ej. 10">
         </p>
 
+        <!-- NUEVO CAMPO PARA EL EXPERIMENTO 5 -->
+        <p>
+            <label for="precio">Precio del Producto ($):</label><br>
+            <input type="number" step="0.01" id="precio" name="precio" placeholder="Ej. 250.50">
+        </p>
+
         <p>
             <label for="correo_proveedor">Correo del Proveedor:</label><br>
             <input type="email" id="correo_proveedor" name="correo_proveedor" placeholder="contacto@proveedor.com">
