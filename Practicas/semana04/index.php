@@ -35,7 +35,11 @@
         <section class="caja seccion-formulario">
             <h2>Registrar Nuevo Producto</h2>
             
-            <form action="procesar.php" method="POST">
+            <!-- Caja para mensajes dinámicos de JS -->
+            <div id="mensaje-sistema"></div>
+            
+            <!-- Se agregó el id="formulario-inventario" -->
+            <form action="procesar.php" method="POST" id="formulario-inventario">
                 <div class="grupo-input">
                     <label for="nombre">Nombre del Producto:</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Ej. Teclado Mecánico">
@@ -66,8 +70,16 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn-guardar">Registrar Producto</button>
+                <!-- Se agregó el id="btnGuardar" -->
+                <button type="submit" class="btn-guardar" id="btnGuardar">Registrar Producto</button>
             </form>
+
+            <!-- Botón y contenedor para mostrar/ocultar información -->
+            <br>
+            <button id="btnMostrarInfo" class="btn-guardar" style="background-color: #7f8c8d;">Mostrar Ayuda</button>
+            <div id="info-extra" style="display: none; margin-top: 15px; padding: 15px; background: #ecf0f1; border-radius: 4px;">
+                <p><strong>Tip:</strong> Todos los campos son obligatorios. El precio y el stock deben ser mayores a 0.</p>
+            </div>
         </section>
 
     </main>
