@@ -1,0 +1,5 @@
+# Ignorar archivos locales con credenciales para no exponer secretos en GitHub
+Practicas/.env.local.php
+**/env.local.php
+.env
+*.log

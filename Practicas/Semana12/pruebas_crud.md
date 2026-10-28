@@ -1,0 +1,17 @@
+# 🧪 Pruebas Funcionales del CRUD — Semana 06
+
+**Proyecto:** Gestor de Inventario  
+**Base de datos:** `gestor_inventario` · **Tabla:** `productos`
+
+| N.º | Prueba realizada | Datos de prueba | Resultado esperado | Resultado obtenido | Estado |
+|---:|---|---|---|---|---|
+| 1 | Registrar un elemento con datos válidos | `nombre="LAPTOP LENOVO THINKPAD"`, `stock=12`, `precio=14500.00`, `correo="ventas@lenovo.com"`, `categoria="Electronica"` | Se guarda en MySQL y aparece al inicio de la tabla con su ID autogenerado | El registro se insertó en `productos` y se mostró en la tabla sumando al valor total del almacén | **Correcta** |
+| 2 | Intentar registrar dejando vacío un campo obligatorio | `nombre=""`, `stock=5`, `precio=200` (desactivando `required` en el inspector para probar PHP) | PHP rechaza el registro con código/mensaje de error y no inserta filas vacías | `crear.php` detuvo la operación y mostró la alerta: *"El nombre del producto es obligatorio"* | **Correcta** |
+| 3 | Consultar el elemento recién creado | Apertura de `index.php` / `listar.php` | Se visualizan todos los campos (`id`, `nombre`, `categoria`, `stock`, `precio`, `correo_proveedor`) desde MySQL | La tabla mostró los registros reales almacenados en `gestor_inventario` | **Correcta** |
+| 4 | Editar uno de sus campos y guardar | Cambio de `stock` de `12` a `20` y `precio` a `13999.00` en `editar.php?id=9` | `actualizar.php` ejecuta el `UPDATE` preparado y redirige con mensaje de éxito | El registro se actualizó sin afectar a los demás productos | **Correcta** |
+| 5 | Recargar la página y verificar que el cambio persiste | Recarga con `F5` en `index.php` y verificación con `SELECT * FROM productos` | Los nuevos valores (`stock=20`, `precio=13999.00`) permanecen guardados en MySQL | Los datos persistieron correctamente en la base de datos | **Correcta** |
+| 6 | Intentar editar un identificador inexistente | Navegar a `editar.php?id=99999` y `editar.php?id=abc` | El sistema valida el ID, informa que el producto no existe y redirige sin errores fatales | `editar.php` detectó que el ID no existe y mostró aviso controlado sin exponer errores SQL | **Correcta** |
+| 7 | Cancelar la confirmación de eliminación | Clic en **Eliminar** sobre el producto de prueba y clic en **Cancelar** en el cuadro de diálogo | La petición no se envía y el producto permanece intacto en la lista | El evento se canceló con `preventDefault()` y el registro se conservó en MySQL | **Correcta** |
+| 8 | Eliminar un registro de prueba y confirmar que desapareció | Clic en **Eliminar** sobre el registro de prueba y clic en **Aceptar** | `eliminar.php` recibe el ID por `POST`, ejecuta `DELETE WHERE id = ?` y el producto desaparece | El registro de demostración fue eliminado de MySQL y dejó de aparecer en el listado | **Correcta** |
+| 9 | Comprobar respuesta cuando no existen coincidencias / lista vacía | Consulta sin registros coincidentes | La tabla muestra el mensaje *"No hay productos registrados"* sin romper el diseño | Se mostró la fila informativa ocupando las columnas de la tabla | **Correcta** |
+| 10 | Verificar que el diseño CSS y la navegación sigan funcionando | Navegación entre listado, formulario de alta y vista de edición | Los estilos Flexbox, colores corporativos y validaciones JS se mantienen consistentes | Todas las vistas conservaron el diseño de `estilos.css` y la interactividad de `script.js` | **Correcta** |

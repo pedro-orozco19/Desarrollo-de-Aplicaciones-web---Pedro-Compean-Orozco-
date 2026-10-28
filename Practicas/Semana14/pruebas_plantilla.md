@@ -1,0 +1,21 @@
+# 🧪 Pruebas Funcionales de Componentes y Plantillas — Semana 12
+
+**Proyecto:** Gestor de Inventario  
+**Componentes evaluados:** `header.php`, `menu.php`, `mensajes.php`, `footer.php`, `tabla_productos.php`, `boton_accion.php`, `paginacion.php`
+
+| N.º | Prueba realizada | Procedimiento | Resultado esperado | Resultado obtenido | Estado |
+|---:|---|---|---|---|---|
+| 1 | Abrir varias páginas que utilicen la nueva plantilla | Abrir `index.php`, `editar.php?id=1`, `reportes.php`, `usuarios.php` y `bitacora.php` | Todas comparten la misma estructura visual y diseño | Las 5 páginas internas y `login_form.php` cargaron con apariencia uniforme | **Correcta** |
+| 2 | Confirmar que encabezado, menú y pie se muestran correctamente | Revisar visualmente y en el inspector de elementos (`F12`) | `<header>`, `<nav>`, `<main>` y `<footer>` se renderizan en orden sin etiquetas rotas | Estructura HTML semántica completa y consistente | **Correcta** |
+| 3 | Verificar que los estilos se cargan una sola vez y sin enlaces rotos | Revisar pestaña *Network (CSS/JS)* en DevTools | `estilos.css` y `script.js` responden con `200 OK` sin duplicarse | Recursos cargados correctamente sin errores `404` | **Correcta** |
+| 4 | Navegar entre todos los módulos desde el menú reutilizable | Hacer clic en Inventario, Estadísticas, Usuarios y Bitácora | Los enlaces llevan a las rutas correctas y resaltan la pestaña activa (`.activo`) | Navegación fluida y pestaña activa resaltada en azul | **Correcta** |
+| 5 | Iniciar sesión con cuentas de distintos roles | Probar con `admin_prueba`, `operador_prueba` y `consulta_prueba` | El encabezado muestra el nombre y la insignia de color correspondiente al rol | Insignias `Administrador`, `Operador` y `Consulta` mostradas correctamente | **Correcta** |
+| 6 | Comprobar que el menú respeta el rol | Comparar menú de `admin_prueba` vs `consulta_prueba` | `consulta_prueba` no ve los enlaces de alta ni los módulos administrativos | El componente `menu.php` adaptó las opciones según `$_SESSION['rol']` | **Correcta** |
+| 7 | Probar mensajes de éxito y error con `mensajes.php` | Registrar un producto válido y luego intentar una acción inválida | Se muestra el recuadro verde (`.mensaje-exito`) o rojo (`.mensaje-error`) y desaparece al recargar | Los mensajes flash se mostraron una sola vez y se limpiaron de la sesión | **Correcta** |
+| 8 | Confirmar que las vistas y componentes muestran los datos sin SQL directo | Revisar `tabla_productos.php` y `boton_accion.php` | Los componentes solo iteran sobre `$registros` y aplican `htmlspecialchars()` | Cero consultas SQL dentro de las vistas y componentes | **Correcta** |
+| 9 | Ejecutar la operación que utiliza Fetch API | Clic en **⚡ Actualizar con Fetch API** y alta asíncrona | La tabla se actualiza en vivo y el aviso aparece en `#mensaje-sistema` | Integración perfecta entre el componente `mensajes.php` y Fetch API | **Correcta** |
+| 10 | Verificar que el endpoint JSON no devuelve HTML accidental de la plantilla | Abrir `api/listar.php` y revisar el cuerpo de la respuesta | La respuesta inicia con `{` y termina con `}`, sin `<!DOCTYPE html>` ni `<header>` | JSON 100% limpio sin contaminación de plantilla HTML | **Correcta** |
+| 11 | Intentar abrir una ruta protegida sin sesión | Cerrar sesión y abrir `reportes.php` o `index.php` | `proteger.php` redirige a `login_form.php` mostrando el aviso mediante `mensajes.php` | Redirección inmediata y mensaje de alerta mostrado en el login | **Correcta** |
+| 12 | Probar una acción restringida con una cuenta sin permiso | Con `consulta_prueba`, intentar abrir `usuarios.php` | `exigirRol()` rechaza el acceso y muestra la alerta roja en `mensajes.php` | Se mostró el mensaje de acceso denegado (`403`) en el componente de mensajes | **Correcta** |
+| 13 | Revisar la consola del navegador y los errores de PHP | Inspeccionar consola JS y salida de PHP | Sin errores de variables indefinidas ni fallos de DOM | Consola y servidor sin errores | **Correcta** |
+| 14 | Confirmar que las funciones principales siguen operando | Ejecutar flujo completo de CRUD, login, filtros y reportes | Todas las operaciones del sistema funcionan de principio a fin | Sistema íntegro y estable | **Correcta** |

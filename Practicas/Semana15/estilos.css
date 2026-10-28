@@ -1,0 +1,597 @@
+/* =========================================================================
+   HOJA DE ESTILOS GLOBAL UNIFICADA — GESTOR DE INVENTARIO
+   Alumno: Pedro Compean Orozco (Semanas 03 a 15)
+   ========================================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* =========================================
+   ENCABEZADO Y MENÚ DE NAVEGACIÓN (Semana 12)
+   ========================================= */
+.encabezado {
+    background-color: #1a252f;
+    color: #ffffff;
+    padding: 18px 28px;
+    border-bottom: 4px solid #3498db;
+}
+
+.encabezado-contenido {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.encabezado h1 {
+    margin: 0;
+    font-size: 1.7em;
+}
+
+.subtitulo-encabezado {
+    margin: 4px 0 0 0;
+    font-size: 0.9em;
+    color: #bdc3c7;
+}
+
+.info-usuario-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge-usuario {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.badge-rol {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.rol-administrador { background-color: #8e44ad; }
+.rol-operador { background-color: #2980b9; }
+.rol-consulta { background-color: #7f8c8d; }
+
+.menu-navegacion {
+    background-color: #2c3e50;
+    padding: 0 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.menu-enlaces, .menu-derecha {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.menu-item {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 12px 16px;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    border-bottom: 3px solid transparent;
+}
+
+.menu-item:hover, .menu-item.activo {
+    background-color: #34495e;
+    border-bottom-color: #3498db;
+}
+
+.btn-salir {
+    background-color: #c0392b;
+    border-radius: 4px;
+    padding: 8px 14px;
+    margin: 6px 0;
+    border-bottom: none !important;
+}
+
+.btn-salir:hover {
+    background-color: #e74c3c;
+}
+
+/* =========================================
+   CONTENEDORES Y MODELO DE CAJA
+   ========================================= */
+.contenedor-principal {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 30px 20px;
+}
+
+.columna-principal {
+    flex: 1 1 760px;
+    min-width: 0;
+}
+
+.caja {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 420px;
+}
+
+.caja-ancha {
+    max-width: 100%;
+}
+
+.caja h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+    font-size: 1.3em;
+}
+
+.cabecera-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+}
+
+.cabecera-seccion h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+/* =========================================
+   BARRA DE BÚSQUEDA, FILTROS Y ORDENAMIENTO (Semana 13)
+   ========================================= */
+.barra-filtros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    margin-bottom: 18px;
+    align-items: end;
+}
+
+.filtro-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.filtro-item label {
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 4px;
+}
+
+.filtro-acciones {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-filtrar {
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-filtrar:hover { background-color: #1f6391; }
+
+.btn-limpiar {
+    background-color: #95a5a6;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.btn-limpiar:hover { background-color: #7f8c8d; }
+
+.filtros-activos-banner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    background-color: #ebf5fb;
+    border: 1px solid #aed6f1;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.chip-filtro {
+    background-color: #3498db;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+}
+
+.enlace-exportar-filtro {
+    margin-left: auto;
+    color: #1f6391;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* =========================================
+   TABLAS Y COMPONENTES VISUALES (Semana 12)
+   ========================================= */
+.tabla-responsive {
+    overflow-x: auto;
+}
+
+.tabla-inventario {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.tabla-inventario th {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 11px 10px;
+    border: 1px solid #2980b9;
+    text-align: left;
+}
+
+.tabla-inventario td {
+    padding: 10px;
+    border: 1px solid #dfe6e9;
+    vertical-align: middle;
+}
+
+.tabla-inventario tbody tr:nth-child(even) {
+    background-color: #f9fbfd;
+}
+
+.tabla-inventario tbody tr:hover {
+    background-color: #eef6fc;
+}
+
+.celda-centro { text-align: center; }
+.celda-derecha { text-align: right; }
+.celda-vacia {
+    text-align: center;
+    padding: 22px !important;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.badge-categoria {
+    background-color: #eaf2f8;
+    color: #2471a3;
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.badge-stock {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.stock-ok {
+    background-color: #d4efdf;
+    color: #196f3d;
+}
+
+.stock-bajo {
+    background-color: #fadbd8;
+    color: #922b21;
+}
+
+.acciones-fila {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.form-eliminar-inline, .form-rol-inline {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    margin: 0;
+}
+
+.btn-accion {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-editar {
+    background-color: #f39c12;
+    color: #fff;
+}
+.btn-editar:hover { background-color: #d68910; }
+
+.btn-eliminar {
+    background-color: #e74c3c;
+    color: #fff;
+}
+.btn-eliminar:hover { background-color: #c0392b; }
+
+.texto-solo-lectura {
+    color: #7f8c8d;
+    font-size: 0.85em;
+    font-style: italic;
+}
+
+.total {
+    color: #27ae60;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* =========================================
+   PAGINACIÓN (Semana 13)
+   ========================================= */
+.barra-paginacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid #ecf0f1;
+    font-size: 0.9em;
+}
+
+.controles-paginacion {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.btn-paginacion {
+    padding: 6px 11px;
+    border: 1px solid #bdc3c7;
+    background-color: #fff;
+    color: #2c3e50;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.btn-paginacion:hover {
+    background-color: #ebf5fb;
+    border-color: #3498db;
+}
+
+.btn-paginacion.activa {
+    background-color: #3498db;
+    color: #fff;
+    border-color: #2980b9;
+}
+
+.btn-paginacion.deshabilitado {
+    color: #bdc3c7;
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   FORMULARIOS Y BOTONES
+   ========================================= */
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.grupo-input label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #34495e;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select {
+    padding: 10px 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    font-size: 0.95em;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.grupo-checkbox {
+    margin: 12px 0;
+    font-size: 0.9em;
+    color: #2c3e50;
+}
+
+.btn-guardar {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 13px;
+    font-size: 1.05em;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 6px;
+    transition: background-color 0.2s;
+}
+
+.btn-guardar:hover { background-color: #2980b9; }
+.btn-gris { background-color: #7f8c8d; }
+.btn-gris:hover { background-color: #636e72; }
+
+.btn-secundario {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    border: 1px solid #bdc3c7;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-secundario:hover { background-color: #dfe6e9; }
+
+.caja-ayuda {
+    margin-top: 15px;
+    padding: 14px;
+    background: #ecf0f1;
+    border-left: 4px solid #3498db;
+    border-radius: 4px;
+    font-size: 0.92em;
+}
+
+/* =========================================
+   TARJETAS KPI DE REPORTES (Semana 13)
+   ========================================= */
+.grid-tarjetas-resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.tarjeta-kpi {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 18px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.kpi-titulo {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.kpi-valor {
+    font-size: 1.6em;
+    color: #2c3e50;
+}
+
+.kpi-verde { color: #27ae60; }
+.kpi-alerta { color: #e74c3c; }
+
+/* =========================================
+   MENSAJES DE ESTADO (Semana 12)
+   ========================================= */
+.mensaje-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 14px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.mensaje-exito {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 14px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.mensaje-advertencia {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    padding: 14px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.pie {
+    background-color: #1a252f;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto;
+}
+
+@media (max-width: 960px) {
+    .contenedor-principal {
+        flex-direction: column;
+    }
+    .caja {
+        max-width: 100%;
+    }
+}
